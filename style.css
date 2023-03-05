@@ -1,0 +1,168 @@
+*{box-sizing: border-box}
+
+body {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0 0 0;
+  background: rgb(190,190,190);
+}
+
+
+.cloudWrap {
+  position: relative;
+  z-index: 1;
+}
+.cloudBase {
+  top: 30px;
+  background: #fff;			
+  filter: drop-shadow(0px 5px 10px rgba(175, 215, 243, 0.6));
+  height: 120px;
+  width: 230px;
+  position: relative;
+  border-radius: 100px;
+}
+
+.cloudBase div {
+  background: #fff;
+  height: 120px;
+  width: 120px;
+  position: relative;
+  top: -60px;
+  margin: 0 auto;
+  border-radius: 100%;
+}
+
+.cloudBaseShadow {
+  position: absolute;
+  top: 65px;
+  left:0;
+  right:0;
+  background: #5B7186;
+  height: 120px;
+  width: 230px;
+  border-radius: 100px;
+  filter: blur(15px);
+  transform: scale(0.8);
+  opacity: 0.4;
+  z-index: 2;
+}
+
+.cloudBaseShadow div {
+  background: #5B7186;
+  height: 120px;
+  width: 120px;
+  position: relative;
+  top: -60px;
+  margin: 0 auto;
+  border-radius: 100%;
+}
+
+.cloudBaseShadow div:after,
+.cloudBaseShadow div:before {
+  content: '';
+  position: absolute;
+  background: #fff;
+  height: 100px;
+  width: 100px;
+  filter: blur(16px);
+  border-radius: 100%;
+}
+.cloudBaseShadow div:after {
+  right: -12px;
+  top: -20px;
+}
+.cloudBaseShadow div:before {
+  right: -92px;
+  top: 33px;
+}
+
+
+@keyframes flash{
+  0%, to { opacity: 1; }
+  4% { opacity: 0; }
+  6% { opacity: .6; }
+  8% { opacity: .2; }
+  10% { opacity: .9; }
+}
+
+@keyframes float{
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+
+.lightningBolt {
+  position: absolute;
+  z-index: 3;
+  width: 80px;
+  height: 20px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: -40px;
+  animation: flash 3s infinite, float 3s ease-in-out infinite;
+}
+
+.lightningBolt:before,
+.lightningBolt:after {
+  content: '';
+  position: absolute;
+}
+.lightningBolt:before {
+  width: 0;
+  height: 0;
+  left: -4px;
+  top: 5px;
+  border-style: solid;
+  border-width: 0px 13px 24px 70px;
+  border-color: transparent transparent #fbeb36 transparent;
+  transform: rotate(-60deg);
+}
+.lightningBolt:after {
+  width: 0;
+  height: 0;
+  left: 4px;
+  top: -40px;
+  border-style: solid;
+  border-width: 0px 13px 24px 70px;
+  border-color: transparent transparent #fbeb36 transparent;
+  transform: rotate(-60deg) scaleY(-1) scaleX(-1);
+}
+
+.wind {
+  position: absolute;
+  top: 20px;
+  left: -10px;
+  width: 90px;
+  height: 20px;
+  background: linear-gradient(-90deg,rgb(91 113 134 / 0.4),transparent);
+  z-index: -1;
+}
+.wind:before {
+  content: '';
+  width: 60px;
+  height: 20px;
+  background: linear-gradient(90deg,transparent,rgb(91 113 134 / 0.4));
+  position: absolute;
+  top: 60px;
+  right: -190px;
+}
+.wind:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 50%;
+  border-radius: 100%;
+  width: 8px;
+  height: 8px;
+  z-index: 1;
+  filter: blur(2px);
+  z-index: 1;
+  box-shadow: 
+  50px -30px 2px rgb(91 113 134 / 0.4),
+  -20px 90px 0px rgb(91 113 134 / 0.4),
+  240px 10px 2px rgb(91 113 134 / 0.4);
+  animation: float 3s ease-in-out infinite;
+}
